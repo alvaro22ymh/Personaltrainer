@@ -1,0 +1,70 @@
+.topbar-wrapper{
+    
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-bottom: 80px;
+}
+
+.title{
+    margin-top: 45px;
+    margin-left: 0;
+    margin-right: 90px;
+    background-color: white;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.title h1{
+    margin: 0;
+}
+
+
+
+.boxUser{
+    margin-top: 45px;
+    border-radius: 10% 10% 0 0;
+    cursor: pointer;
+    background-color: white;
+    padding: 15px;
+    
+
+}
+.logoUser{
+    
+    height: 35px;
+    width: 35px;
+    object-fit: cover;
+   
+}
+
+.box-menu{
+    position: absolute;    
+    margin-top: -1px;
+    border: none;
+}
+
+
+.user-menu-dropdown{
+    position: relative;
+    left: -15px;
+    top: -5px;
+    border-radius: 0 5px 5px 5px;
+    background-color: white;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   padding: 15px;
+}
+
+.text-dropdown{
+    text-decoration: none;
+    color: black;
+}
+
+.user-menu-dropdown li{
+    margin-top: 5px;
+    text-decoration: none; 
+    list-style: none;
+}

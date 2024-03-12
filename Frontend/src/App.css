@@ -1,0 +1,6 @@
+body{
+  overflow: hidden;   
+  background: url('../public/equipamiento-deportivo.jpg') no-repeat;
+  background-size: cover;
+  height: 100vh;
+}

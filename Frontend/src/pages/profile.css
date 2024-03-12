@@ -1,0 +1,43 @@
+.wrapper-profile{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.box-profile{
+    margin-top: 100px;
+    height: 300px;
+    width: 500px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.wrapper2{
+    display: flex;
+    align-items: center;
+}
+
+
+.changeBtn{
+    margin-left: 10px;
+    background-color: rgb(1, 207, 207);
+    color: white;
+    font-weight: bold;
+    border-radius: 9px;
+    height: 30px;
+    cursor: pointer;
+    
+}
+
+.ChangeText{
+    color: antiquewhite;
+    text-decoration: none;
+}
+
+.errorMsg{
+    color: red;
+}

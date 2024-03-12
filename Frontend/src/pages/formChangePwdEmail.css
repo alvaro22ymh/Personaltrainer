@@ -1,0 +1,107 @@
+.change-wrapper{
+   display: flex;
+   margin-top: 120px;
+   align-items: center;
+   justify-content: center;
+  width: 100%;
+
+}
+
+.box-changePwdEmail{
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  align-items: center;
+  justify-content: center;
+  width: 500px;
+  padding-top: 30px;
+}
+.changePwdEmail{
+   height: 200px;
+   background-color: white;
+   padding-top: 0;
+   display: flex;
+   align-items: center;
+   flex-direction: column;
+
+}
+
+ .exit{
+    cursor: pointer;
+ }
+
+ .changeEmail{
+   color: black;
+ }
+
+ .emailPwdInput{
+   margin-left: 20px;
+   height: 20px;
+ }
+
+ .save-changes-btn{
+   margin-left: 10px;
+    background-color: rgb(1, 207, 207);
+    color: white;
+    font-weight: bold;
+    border-radius: 9px;
+    min-height: 30px;
+    cursor: pointer;
+  
+    
+ }
+
+ .back{
+   margin-bottom: 40px;
+    background-color: rgb(60, 83, 83);
+    color: white;
+    font-weight: bold;
+    border-radius: 9px;
+    height: 30px;
+    width: 60px;
+    cursor: pointer;
+   
+
+ }
+
+ .backText{
+   text-decoration: none;
+   color: white;
+ }
+
+ .data-change{
+   display: flex;
+   flex-direction: column;
+   align-items: flex-end;
+   margin-bottom: 20px;
+  
+ }
+
+ .errorMsgChange{
+   color: rgb(57, 21, 21);
+ }
+
+ .errorMsgChangeBox{
+   background-color: red;
+   max-height: 20px;
+   display: flex;
+   align-items: center;
+   position: relative;
+   top:10%;
+ }
+
+ .successMsgChangeBox{
+   background-color: rgb(18, 255, 101);
+   max-height: 40px;
+   width: 280px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   
+ }
+
+ .successMsgChangeBox p{
+    color: rgb(14, 74, 30);
+    font-weight: bold;
+ }
+ 
