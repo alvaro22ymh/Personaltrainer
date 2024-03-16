@@ -9,7 +9,7 @@ import axios from '../api/axios'
 
 export default function FormChangeEmail() {
 
-const {user} = useContext(AuthContext)
+const {user,setUser} = useContext(AuthContext)
 
 const  [newEmail1,setNewEmail1] = useState('')
 const  [newEmail2,setNewEmail2] = useState('')
@@ -42,8 +42,16 @@ const [success,setSuccess] = useState('')
           try {
             const res = await axios.put(process.env.REACT_APP_API_URL+'user/updateUserEmail',{email:newEmail2,oldEmail},{headers})
             setSuccess('Email changed successfully')
-          } catch (error) {
-            
+          } catch (err) {
+            if(err.response?.status===401){
+              setError(err);
+              console.log(error);
+              setUser(null)
+          }
+          else if(err.response?.status===403){
+              setError('jwt invalid or expired');
+              setUser(null)
+          }
           }
           
           
@@ -60,7 +68,7 @@ const [success,setSuccess] = useState('')
      <TopBar />
      <div className='change-wrapper'>
       <div className="box-changePwdEmail">
-        <button className='back'><Link to='/Profile' className='backText'>Back</Link></button>
+       <Link to='/Profile' className='backText'> <button className='back'>Back</button></Link>
           <form onSubmit={(e)=>changeEmail(e)} className="changePwdEmail">
            
               <div className="data-change">

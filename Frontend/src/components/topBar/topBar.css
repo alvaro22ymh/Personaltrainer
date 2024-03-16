@@ -2,14 +2,35 @@
     
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     margin-bottom: 80px;
+
 }
+
+
+.home-container{
+    margin-top: 45px;
+    margin-right: 20px;
+    display: flex;
+    background-color: white;
+    border-radius: 6px;
+    padding: 4px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.home-text{ 
+    text-decoration: none;
+}
+
+
 
 .title{
     margin-top: 45px;
     margin-left: 0;
-    margin-right: 90px;
+    margin-right: 50px;
     background-color: white;
     padding: 15px;
     border-radius: 10px;

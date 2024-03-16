@@ -1,0 +1,26 @@
+
+.rightbar-wrapper{
+    position:fixed;
+    top: 40%;
+    right: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+}
+
+.rightbar-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.rightbar-buttoms{
+    cursor: pointer;
+    margin-bottom: 30px;
+    padding: 10px;
+    background-color: #22ff4b81;
+    color: white;
+    font-weight: bold;
+    border-color:#42fe6400;
+    font-size:medium;
+}

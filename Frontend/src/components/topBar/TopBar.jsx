@@ -6,7 +6,7 @@ import { IoMdArrowDropdown } from 'react-icons/io';
 import { useContext, useState } from 'react';
 
 
-export default function TopBar(){
+export default function TopBar(home=''){
 
     const [isOpen, setIsOpen] = useState(false);
 
@@ -17,8 +17,14 @@ export default function TopBar(){
 
     return (
         <>
-        
         <div className="topbar-wrapper">
+        <Link classname='link-to-home' to='/dashboard'>
+            <div className='home-container'>
+                <h3 className='home-text'>Home</h3>
+            </div>
+        </Link>
+        
+       
             <div className="title">
                 <h1>Aleatory Routine Creator</h1>
             </div>

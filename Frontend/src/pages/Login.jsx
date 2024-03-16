@@ -9,7 +9,7 @@ export default function Login() {
 
   const url = process.env.REACT_APP_API_URL
 
-  const {setUser} = useContext(AuthContext)
+  const {user,setUser} = useContext(AuthContext)
   const emailRef = useRef()
   const pwdRef = useRef()
   const errorRef = useRef()
@@ -38,25 +38,26 @@ export default function Login() {
       
         const res = await axios.post(`${process.env.REACT_APP_API_URL}auth/login`, {email, password})
         const accessToken=res?.data?.accessToken;
-        console.log(accessToken);
+
         const roles=res?.data?.userRolesId;
-        console.log(roles);
+
         setUser({email,password,accessToken,roles})
         setEmail(email)
         setPwd(password)
         setSuccess(true)  
-    } catch (error) {
-      if(!error?.response){
+        
+    } catch (err) {
+      if(!err?.response){
         setErrMsg('No server Response')
-      }else if(error.response?.status===400){
+      }else if(err.response?.status===400){
         setErrMsg('Missing username or password')
-      }else if(error.response?.status===401){
+      }else if(err.response?.status===401){
         setErrMsg('Unauthorized')
       }else{
-        setErrMsg('Error sending request to api' +error)
+        setErrMsg('Error sending request to api' +err)
       }
       errorRef.current.focus();
-      console.log(error);
+      
     }
   }
 

@@ -17,20 +17,21 @@ export const createUser = async(req,res) =>{
         res.json(data);
         
     } catch (error) {
-        res.status(500).json({'create user  controller': error});
+        res.status(500).json({'create user controller': error});
     }
 
 }
 
 
 export const getUser = async(req,res)  =>{
-    const {email} =req.body;
+    const {email} = req.query;
 
     try {
+        console.log(email);
         const [rows,fields] = await UserModel.findOne(email);
         res.json(rows);
     } catch (error) {
-        res.status(500).json(error)
+        res.status(500).json({'GetUserController':error})
     }
 }
 
