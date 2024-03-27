@@ -9,6 +9,7 @@ import { verityJWT } from "./middlewares/verifyJWT.js";
 import cookieParser from "cookie-parser"
 import refreshRoutes from "./routes/refresh.js";
 import logoutRoutes from "./routes/logout.js";
+import recoverRoutes from "./routes/recoverPwd.js";
 
 
 //d
@@ -43,7 +44,8 @@ dotenvConfig();
     app.use('/api/auth', authRoutes)
     app.use('/api/refresh',refreshRoutes)
     app.use('/api/logout',logoutRoutes)
-    app.use(verityJWT)
+    app.use('/api/recoverPwd',recoverRoutes)
+    // app.use(verityJWT)
     app.use('/api/user',userRoutes)
     app.use('/api/routines',routineRoutes)
 

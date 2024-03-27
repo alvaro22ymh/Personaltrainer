@@ -10,18 +10,11 @@ import axios from 'axios'
 
 export default function Profile(){
     const {user,setUser} = useContext(AuthContext)
-    const [displayFormEmail, setDisplayFormEmail] = useState(false)
-    const [displayFormPwd, setDisplayFormPwd] = useState(false)
+    const {setExpired} = useContext(AuthContext)
     const [error,setError ] = useState('')
 
 
-const handleClickEmail = () =>{
-    setDisplayFormEmail(!displayFormEmail);
-}
 
-const handleClickPwd = () =>{
-    setDisplayFormPwd(!displayFormPwd);
-}
 
     useEffect(()=>{
         const getUser = async()=>{
@@ -45,6 +38,7 @@ const handleClickPwd = () =>{
                 else if(err.response?.status===403){
                     setError('jwt invalid or expired');
                     setUser(null)
+                    setExpired(true)
                 }
             }
         }

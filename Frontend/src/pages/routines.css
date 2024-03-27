@@ -1,0 +1,36 @@
+.routines-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 30px;
+    padding-top: 40px ;
+    position: fixed;
+    height: max-content;
+    width: max-content;
+    
+}
+
+
+.menu-selection{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    position: fixed;
+    left:35%;
+    bottom: 40%;
+    align-items: center;
+    justify-content: center;
+}
+
+.routineBtn{
+    cursor: pointer;
+
+    padding: 10px;
+    background-color: #19c639ee;
+    color: white;
+    font-weight: bold;
+    border-color:#42fe6400;
+    font-size:medium;
+}
+

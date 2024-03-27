@@ -10,6 +10,7 @@ import axios from '../api/axios'
 export default function FormChangeEmail() {
 
 const {user,setUser} = useContext(AuthContext)
+const {expired,setExpired} = useContext(AuthContext)
 
 const  [newEmail1,setNewEmail1] = useState('')
 const  [newEmail2,setNewEmail2] = useState('')
@@ -51,6 +52,7 @@ const [success,setSuccess] = useState('')
           else if(err.response?.status===403){
               setError('jwt invalid or expired');
               setUser(null)
+              setExpired(true)
           }
           }
           

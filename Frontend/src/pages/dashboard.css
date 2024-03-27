@@ -1,0 +1,22 @@
+
+.dashboard-menu{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.create-routine-btn{
+    
+    cursor: pointer;
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #22ff4b81;
+    color: white;
+    font-weight: bold;
+    border-color:#42fe6400;
+    font-size:large;
+}
+
+.link-newroutine{
+    margin-top: 10%;
+}

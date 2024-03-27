@@ -10,6 +10,7 @@ import axios from '../api/axios'
 export default function FormChangePwd() {
 
 const {user,setUser} = useContext(AuthContext)
+const {expired,setExpired} = useContext(AuthContext)
 
 const  [newPwd1,setNewPwd1] = useState('')
 const  [newPwd2,setNewPwd2] = useState('')
@@ -50,6 +51,7 @@ const [success,setSuccess] = useState('')
               else if(err.response?.status===403){
                   setError('jwt invalid or expired');
                   setUser(null)
+                  setExpired(true)
               }
               }
           
@@ -73,7 +75,7 @@ const [success,setSuccess] = useState('')
               <div className="data-change">
                 <h4 className='changeEmail'> 
                     New Password 
-                      <input className='emailPwdInput' type="password" value={newPwd1} autoomplete="off" onChange={handleChangePwd1} /> 
+                      <input className='emailPwdInput' type="password" value={newPwd1} autoComplete="off" onChange={handleChangePwd1} /> 
                 </h4> 
                 <h4 className='changeEmail'> 
                 Confirm new password 

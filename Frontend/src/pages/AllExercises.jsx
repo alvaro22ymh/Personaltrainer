@@ -10,9 +10,11 @@ import { AuthContext } from '../context/AuthProvider';
 
 export default function AllExercises() {
     const {user,setUser} = useContext(AuthContext)
+    const {expired,setExpired} = useContext(AuthContext)
     const [exercises,setExercises] = useState(null);
     const [error,setError] = useState('');
     const [isOpen, setIsOpen] = useState(false);
+    const [imgSelected, setImgSelected] = useState('');
 
 
     useEffect(()=>{
@@ -34,6 +36,7 @@ export default function AllExercises() {
               else if(err.response?.status===403){
                   setError('jwt invalid or expired');
                   setUser(null)
+                  setExpired(true)
               }
           }
       }
@@ -58,8 +61,10 @@ export default function AllExercises() {
         12: 'Adductors'
     }
 
-    const toggleModal = () =>{
+    const toggleModal = (src=null) =>{
         setIsOpen(!isOpen);
+        src && setImgSelected(src)
+        
     }
 
     return (
@@ -86,8 +91,7 @@ export default function AllExercises() {
                             <li key={`upper_${e.exercise_id}`} className="exercise-item">
                                     <p className="exercise-name">{e['exercise_name']}</p>
                                     <p className="muscle-name">{musclesNames[muscleId]}</p>
-                            <img src={"/Pictures/"+e.exercise_picture} onClick={toggleModal} className="exercise-img" />
-                          
+                            <img src={"/Pictures/"+e.exercise_picture} onClick={()=>toggleModal("/Pictures/"+e.exercise_picture)} className="exercise-img" />
                                     <p>{e.description}</p>
                             </li>)
                         })
@@ -101,27 +105,26 @@ export default function AllExercises() {
                             <li key={`lower_${e.exercise_id}`} className="exercise-item">
                                 <p className="exercise-name">{e['exercise_name']}</p>
                                 <p className="muscle-name">{musclesNames[muscleId]}</p>
-                            <img src={"/Pictures/"+e.exercise_picture} alt="" className="exercise-img" />
+                            <img src={"/Pictures/"+e.exercise_picture} onClick={()=>toggleModal("/Pictures/"+e.exercise_picture)} alt="" className="exercise-img" />
                                 <p>{e.description}</p>
                              </li>)
                     })
                 }
                         
-                        
-                        
-
-                       
-             
-                
-             
-            
-                
-              
-                
-                
+        
             </ul>
         </div>
-    </div>    
+    </div>  
+                {isOpen &&
+                    <div className='modal'> 
+                        <div className="modal-content">
+                                <span className='close-modal' onClick={toggleModal}>X</span>
+                                <img className='imgSelected' src={imgSelected} alt="" />
+                        </div>  
+                    </div>
+                }
+                
+
     </>
   )
 }

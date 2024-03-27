@@ -5,11 +5,14 @@ import {FaUser,FaLock} from "react-icons/fa"
 import './login.css'
 import {AuthContext} from '../context/AuthProvider.js'
 import axios from '../api/axios.js'
+import ExpiredTopBar from '../components/expiredTopBar/ExpiredTopBar.jsx'
+import { Link } from 'react-router-dom'
 export default function Login() {
 
   const url = process.env.REACT_APP_API_URL
 
   const {user,setUser} = useContext(AuthContext)
+  const {expired,setExpired} = useContext(AuthContext)
   const emailRef = useRef()
   const pwdRef = useRef()
   const errorRef = useRef()
@@ -45,6 +48,7 @@ export default function Login() {
         setEmail(email)
         setPwd(password)
         setSuccess(true)  
+        setExpired(null)
         
     } catch (err) {
       if(!err?.response){
@@ -76,8 +80,9 @@ export default function Login() {
             </div>
           ) : (
       
-    
-    <div className="login-wrapper">
+           
+      <div className="login-wrapper">
+      <ExpiredTopBar/>
      
      
         <form onSubmit={handleSubmit}>
@@ -106,8 +111,8 @@ export default function Login() {
                 </div>
 
                   <div className="forgot-create">
-                    <a href='#'>Reset password</a> 
-                    <a href='#'>Create an account</a>
+                    <Link to='/recoverPwd'><a >Reset password</a> </Link>
+                    <a >Create an account</a>
                   </div>
                     
                   <button className='login-button'>Login</button>

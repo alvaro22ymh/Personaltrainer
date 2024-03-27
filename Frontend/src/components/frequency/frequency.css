@@ -1,0 +1,118 @@
+.frequency-box{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    overflow-y: scroll;
+    height: 55vh ;
+    width: 65vw;
+    background-color: white;
+    border-radius: 9px;
+    overflow-x: hidden;
+    border-top: 15px solid white;
+    border-bottom: 15px solid white;
+ 
+}
+
+.wrapper-frequency{
+        position: fixed;
+        top: 25%;
+        left: 10%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        
+}
+
+.frequency-list{
+    width: 93%;
+    padding-left: 20px;
+    
+   
+}
+
+.recreateRoutine{
+  height: 40px;
+  width: 120px;
+  background-color: rgb(142, 31, 127);
+  color: rgb(255, 255, 255);
+  font-size: larger;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.saveRoutine{
+  margin-left: 8px;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #19c639ee;
+  color: white;
+  font-weight: bold;
+  border-color:#42fe6400;
+  font-size:medium;
+}
+
+.view-exercise{
+    background-color: aqua;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+    padding: 5px;
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+    font-size: small;
+    cursor: pointer;
+}
+
+.exercise-it{
+
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr 1fr;
+    gap: 10px;
+    margin-right: 10px;
+    border-bottom: 1px solid #000000;
+    align-items: center;
+    
+}
+
+.frequency-modal {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8); /* fondo semi-transparente */
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+  }
+
+  .frequency-modal-content {
+    margin: 20%;
+    background-color: #fefefe;
+    padding: 20px;
+    border-radius: 8px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .frequency-imgSelected{
+    
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  .frequency-close-modal{
+    cursor: pointer;
+  }

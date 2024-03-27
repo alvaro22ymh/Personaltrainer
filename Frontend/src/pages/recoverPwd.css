@@ -1,0 +1,58 @@
+.recover-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.recover-box{
+    width: 40%;
+    margin-top: 10%;
+}
+
+.recover-button{
+    cursor: pointer;
+    margin-top: 10px;
+    height: 50px;
+    width: 60%;
+    background-color: rgb(1, 207, 207);
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+
+}
+
+.tokenSentMsg{
+    background-color: rgb(18, 73, 49);
+    margin-top: 0;
+    font-weight: 800;
+    color: rgb(46, 238, 53);
+   padding: 5px 20px;
+}
+
+.changePwd{
+    color: white;
+}
+
+.success-box{
+    background-color: white;
+    margin-top: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10%;
+    border-radius: 8px;
+}
+
+.goToLogin{
+    background-color: rgb(48, 255, 165);
+    margin-top: 20%;
+    font-weight: 800;
+    font-size: medium;
+    color: rgb(22, 68, 24);
+   padding: 10px 20px;
+   border: none;
+   border-radius: 5px;
+   cursor: pointer;
+}

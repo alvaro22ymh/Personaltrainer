@@ -16,6 +16,9 @@ import Logout from './pages/logout';
 import FormChangeEmail from './pages/ChangeEmail';
 import FormChangePwd from './pages/ChangePwd';
 import AllExercises from './pages/AllExercises';
+import Routines from './pages/Routines';
+import SavedRoutines from './pages/SavedRoutines';
+import RecoverPwd from './pages/RecoverPwd';
 
 function App() {
   const {user} = useContext(AuthContext)
@@ -31,6 +34,9 @@ function App() {
         <Route  path="/profile" element={!user? <Navigate to="/login"/> : <Profile/> }/> 
         <Route  path="/changeEmail" element={!user? <Navigate to="/login"/> : <FormChangeEmail/> }/> 
         <Route  path="/changePwd" element={!user? <Navigate to="/login"/> : <FormChangePwd/> }/> 
+        <Route  path="/createRoutine" element={!user? <Navigate to="/login"/> : <Routines/> }/> 
+        <Route  path="/savedRoutines" element={!user? <Navigate to="/login"/> : <SavedRoutines/> }/> 
+        <Route  path="/recoverPwd" element={<RecoverPwd/> }/> 
         <Route  path="/logout" element={<Logout/> }/> 
 
       </Routes>

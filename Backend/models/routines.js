@@ -30,15 +30,16 @@ export class RoutineModel {
                 legDay.sort((a,b)=>b.muscle_id - a.muscle_id)
                 takenLower = []
                 return legDay;
-
+                
             case 'upperDay':
                 for(let i=0;i<7;i++){
                         
                     let upperExercise = getRandomNumberFromSet([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27])
                   
-                    if(takenUpper.includes(upperExercise)){
+                    while(takenUpper.includes(upperExercise)){
                         upperExercise = await getRandomNumberFromSet([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27])
                     }
+
                     takenUpper.push(upperExercise)
                     const [rows,fields]= await dbConnection.query('SELECT * FROM upper_body_exercise WHERE exercise_id=?',[upperExercise])
                     upperDay.push(rows[0])
@@ -148,7 +149,7 @@ export class RoutineModel {
         
                 
         default:
-            return 'Bad request on frequency of routine';
+            throw new Error(`Bad request on frequency of routine Model, value: ${frequency}`);
         }
     }
 }

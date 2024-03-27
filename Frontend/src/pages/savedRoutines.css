@@ -1,0 +1,360 @@
+.exercices-box{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    overflow-y: scroll;
+    max-height: 60vh ;
+    max-width: 70%;
+    background-color: white;
+    margin-left: 30px;
+    border-radius: 9px;
+    overflow-x: hidden;
+    border-top: 15px solid white;
+    border-bottom: 15px solid white;
+ 
+}
+.loading{
+    text-decoration: none;
+}
+
+.exercise-lista{
+    width: 93%;
+    padding-left: 20px;
+
+}
+
+.exercise-item-modal{
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 2fr 3fr;
+    gap: 25px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #000000;
+    
+}
+.exercise-item{
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 25px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #000000;
+    
+}
+.exercise-img{
+    width: 140px;
+    cursor: pointer;
+}
+
+.exercise-name{
+    font-weight: bold;
+}
+
+
+.savedRoutine-modal {
+    position: fixed;
+    z-index: 0;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8); /* fondo semi-transparente */
+  overflow: hidden;
+  }
+
+.success-modal {
+    position: fixed;
+    z-index: 0;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8); /* fondo semi-transparente */
+  overflow: hidden;
+  }
+
+ 
+
+  .savedRoutine-modalContent {
+    margin: 5% auto;
+    max-width: 80%; /* máximo ancho del modal */
+    max-height: 80vh;
+    background-color: #fefefe;
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    overflow-y: scroll;
+  }
+  .success-modalContent {
+    margin: 5% auto;
+    max-width: 30vw; /* máximo ancho del modal */
+    max-height: 20vh;
+    background-color: #fefefe;
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40vh;
+    overflow-y: none;
+    position: absolute;
+    left: 30%;
+  }
+
+  .message-success-modal{
+    color: rgb(9, 84, 59);
+    font-size: larger;
+    font-weight: 900;
+    margin-top: 30px;
+   
+  }
+
+  .waiting{
+    margin-left: 20px;
+    font-weight: 800;
+  }
+
+  .success-close-modal{
+    background-color: red;
+    padding: 5px;
+    border-radius: 7%;
+    position: relative;
+    left: -70px;
+    color: white;
+  font-size:13px;
+  font-weight: 800;
+  cursor: pointer;
+  }
+  .imgSelected{
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  .savedRoutine-close-modal{
+    cursor: pointer;
+    color: red;
+    font-weight: 900;
+    font-size: large;
+  }
+  .savedRoutine-close-modal-week{
+    cursor: pointer;
+    color: red;
+    font-weight: 900;
+    font-size: large;
+    border: 1px solid red;
+    padding: 3px;
+  }
+
+.btn-not{
+  background-color: red;
+  border: none;
+  margin-left: 5px;
+
+}
+
+
+.btn-yes,.btn-not{
+  font-weight: 800;
+  padding: 5px;
+  border-radius: 8px;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+.btn-yes{
+  background-color: rgb(0, 255, 0);
+  border: none;
+
+}
+
+  .view-exercise{
+    background-color: aqua;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+    /* padding: 5px; */
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+    font-size: small;
+    cursor: pointer;
+}
+
+.delete-routine{
+  background-color: rgb(209, 5, 255);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5px 0;
+  /* padding: 5px; */
+  color: white;
+  font-weight: bold;
+  border-radius: 10px;
+  font-size: small;
+  cursor: pointer;
+}
+
+
+
+
+.week-box{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow-y: scroll;
+  max-height: 60vh ;
+  max-width: 65vw;
+  background-color: white;
+  border-radius: 9px;
+  overflow-x: hidden;
+  border-top: 15px solid white;
+  border-bottom: 15px solid white;
+
+}
+
+.boxTitle{
+background-color: rgb(18, 146, 80);
+width: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+color: white;
+font-weight: 900;
+}
+
+.titleWeekRoutine{
+margin-bottom: 0;
+margin-bottom: 10px;
+}
+
+.wrapper-week{
+      position: fixed;
+      top: 18%;
+      left: 10%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      padding: 20px;
+      background-color: white;
+      
+}
+.recreateRoutine{
+height: 40px;
+width: 120px;
+background-color: rgb(142, 31, 127);
+color: rgb(255, 255, 255);
+font-size: larger;
+font-weight: bold;
+border: none;
+border-radius: 8px;
+cursor: pointer;
+}
+
+.dayTitleBox{
+background-color: rgba(72, 240, 153, 0.676);
+width: 100%;
+height: 30px;
+display: flex;
+align-items: center;
+justify-content: flex-start;
+margin-top: 10px;
+}
+
+
+
+.dayOfWeek{
+margin-left: 10%;
+font-size: larger;
+font-weight: bolder;
+
+text-decoration:underline;
+
+}
+.week-list{
+  width: 93%;
+  padding-left: 20px;
+
+ 
+}
+
+.view-exercise{
+  background-color: aqua;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5px;
+  padding: 5px;
+  color: white;
+  font-weight: bold;
+  border-radius: 10px;
+  font-size: small;
+  cursor: pointer;
+}
+
+.saveRoutine{
+margin-left: 8px;
+cursor: pointer;
+padding: 10px;
+border-radius: 8px;
+background-color: #19c639ee;
+color: white;
+font-weight: bold;
+border-color:#42fe6400;
+font-size:medium;
+}
+
+.exercise-it{
+
+  display: grid;
+  grid-template-columns: 2fr 1fr 2fr 1fr;
+  gap: 10px;
+  margin-right: 10px;
+  border-bottom: 1px solid #000000;
+  align-items: center;
+  
+}
+
+.week-modal {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.8); /* fondo semi-transparente */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.week-modal-content {
+  margin: 20%;
+  background-color: #fefefe;
+  padding: 20px;
+  border-radius: 8px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.week-imgSelected{
+  
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.week-close-modal{
+  cursor: pointer;
+}
