@@ -5,6 +5,37 @@ import { dbConnection } from '../index.js';
 
 export class UserModel {
 
+    static async findOrCreate({googleId,email='',name='',userRolId=[]}){
+   
+        function generarNombreUnico(name) {
+            // Generar 5 números aleatorios entre 0 y 9
+            const numbers = Array.from({ length: 5 }, () => Math.floor(Math.random() * 10));
+            // Concatenar los números aleatorios con el nombre de usuario
+            const username = `${name}${numbers.join('')}`;
+            return username;
+          }
+          
+          const username = generarNombreUnico(name);
+          const noSpace = username.replace(/\s/g, '')
+      
+            const [data] = await dbConnection.query('SELECT * FROM user WHERE google_id=?',[googleId])
+                if(data.length > 0){
+                    const userData = data[0]
+                    if (userData.hasOwnProperty('user_id')){
+                      
+                    return data[0]
+                    }
+                    
+                }else{
+                    const [data] = await dbConnection.query('INSERT INTO user (google_id,email,username) VALUES (?,?,?)',[googleId,email,noSpace])
+                                   await dbConnection.query('INSERT INTO user_role (user_id, role_id) VALUES ((SELECT user_id FROM user WHERE email = ?), (SELECT role_id FROM role WHERE role_id = ?))', [email, userRolId])
+                    return data[0]
+                }
+               
+                    
+            }
+        
+
 
     static async create({input}){
         const {username,email,roles,hashedPassword} = input;
@@ -53,7 +84,7 @@ export class UserModel {
      
         try {
         const [AllUserRoles] = await dbConnection.query('SELECT * FROM user_role')
-       // const [data]= await dbConnection.query('SELECT * FROM role WHERE role_id=(SELECT role_id FROM user_role WHERE user_id=?)',[userId])
+    //    const [data]= await dbConnection.query('SELECT * FROM role WHERE role_id=(SELECT role_id FROM user_role WHERE user_id=?)',[userId])
         return AllUserRoles;
         
         } catch (error) {
@@ -69,6 +100,15 @@ export class UserModel {
             throw new Error('db Error: '+error)
         }
     }
+    static async findById(id){
+        try {
+        const [data] = await dbConnection.query('SELECT * FROM user WHERE user_id=?',[id])
+            return data;
+        
+        } catch (error) {
+            throw new Error('db Error: '+error)
+        }
+    }
 
 
     static async insertToken({input}){
@@ -77,10 +117,15 @@ export class UserModel {
         try {
             await dbConnection.query('UPDATE user SET refreshToken=? WHERE email=?',[refreshToken, email])
             return { success: true, message: 'Token inserted successfully.' };
+            
         } catch (error) {
             throw new Error('DB error:' +error)
         }
     }
+    
+
+
+
     static async deleteToken(refreshToken){
         
 

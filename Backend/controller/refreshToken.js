@@ -17,7 +17,7 @@ export const refreshTokenController = async(req,res) =>{
       const AllUserRoles = await UserModel.findUserRoles(user.user_id)
       const userRolesId = []
       AllUserRoles.forEach(role=> role.user_id == user.user_id && userRolesId.push(role.role_id))
-     console.log(userRolesId);
+
     
 
       //evaluate jwt

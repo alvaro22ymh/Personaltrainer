@@ -31,12 +31,21 @@ export default function SavedRoutines() {
 
 
     useEffect(()=>{   
+
+
+
         const getExercises = async()=>{
                       
           const headers = {
               'Authorization': `Bearer ${user.accessToken}`
           }
           try {
+            const res1 = await axios.get(process.env.REACT_APP_API_URL+'refresh',{withCredentials: true})
+                console.log(user);
+                setUser(prevUser => ({
+                    ...prevUser, // Mantén las propiedades existentes
+                    accessToken: res1['data']['accessToken'] // Actualiza solo accessToken
+                  }))
               const res = await axios.get(process.env.REACT_APP_API_URL+'routines/getSavedRoutines',{
               params:{user:user.email},
               headers

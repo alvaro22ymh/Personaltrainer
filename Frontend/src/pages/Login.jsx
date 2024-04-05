@@ -11,6 +11,7 @@ export default function Login() {
 
   const url = process.env.REACT_APP_API_URL
 
+
   const {user,setUser} = useContext(AuthContext)
   const {expired,setExpired} = useContext(AuthContext)
   const emailRef = useRef()
@@ -39,9 +40,9 @@ export default function Login() {
 
     try {
       
-        const res = await axios.post(`${process.env.REACT_APP_API_URL}auth/login`, {email, password})
+        const res = await axios.post(`${process.env.REACT_APP_API_URL}auth/login`,{email, password},{withCredentials:true})
         const accessToken=res?.data?.accessToken;
-
+        
         const roles=res?.data?.userRolesId;
 
         setUser({email,password,accessToken,roles})
@@ -112,7 +113,9 @@ export default function Login() {
 
                   <div className="forgot-create">
                     <Link to='/recoverPwd'><a >Reset password</a> </Link>
-                    <a >Create an account</a>
+                    <Link to='/CreateAccount'><a >Create an account</a> </Link>
+                    <p>Or log in with:</p>
+                    <Link to='http://localhost:5000/api/auth/google'><a >Google</a></Link>
                   </div>
                     
                   <button className='login-button'>Login</button>

@@ -8,6 +8,7 @@ import { AuthContext } from '../context/AuthProvider';
 
 
 
+
 export default function AllExercises() {
     const {user,setUser} = useContext(AuthContext)
     const {expired,setExpired} = useContext(AuthContext)
@@ -18,6 +19,21 @@ export default function AllExercises() {
 
 
     useEffect(()=>{
+        const refreshToken = async()=>{
+        
+            try {
+                const res = await axios.get(process.env.REACT_APP_API_URL+'refresh',{withCredentials: true})
+                console.log(user);
+                setUser(prevUser => ({
+                    ...prevUser, // Mantén las propiedades existentes
+                    accessToken: res['data']['accessToken'] // Actualiza solo accessToken
+                  }))
+            } catch (err) {
+                console.log(err.message);
+            }
+        }
+        refreshToken()
+
         const getExercises = async()=>{
                       
           const headers = {

@@ -7,6 +7,6 @@ import { verityJWT } from "../middlewares/verifyJWT.js";
 
     const refreshRoutes = new Router()
 
-    refreshRoutes.get("/",verityJWT,refreshTokenController)
+    refreshRoutes.get("/",refreshTokenController)
 
     export default refreshRoutes

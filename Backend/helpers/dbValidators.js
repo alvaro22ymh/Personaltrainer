@@ -55,7 +55,7 @@ export const usernameAlreadyExist = async(username='') =>{
             throw new Error(`Username already exist`)
         }
     } catch (error) {
-        throw new Error(`Error in Db username validation: `+ error)
+        throw new Error(error)
     }
 
 }
@@ -68,7 +68,7 @@ export const emailAlreadyExist = async(email='') =>{
             throw new Error(`email already exist`)
         }
     } catch (error) {
-        throw new Error(`Error in Db email validation: `+ error)
+        throw new Error(error)
     }
 
 }
