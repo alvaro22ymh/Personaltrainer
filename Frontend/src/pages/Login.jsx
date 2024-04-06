@@ -114,7 +114,7 @@ export default function Login() {
                   <div className="forgot-create">
                     <Link to='/recoverPwd'><a >Reset password</a> </Link>
                     <Link to='/CreateAccount'><a >Create an account</a> </Link>
-                    <p>Or log in with:</p>
+                    <p className='orlogin'>Or log in with:</p>
                     <Link to='http://localhost:5000/api/auth/google'><a >Google</a></Link>
                   </div>
                     

@@ -9,40 +9,23 @@ import passport from 'passport';
 import jwt from 'jsonwebtoken';
 import { config as dotenvConfig } from 'dotenv';
 dotenvConfig();
-            
-        passport.use(new GoogleStrategy({
-            clientID: process.env.GOOGLE_CLIENT_ID,
-            clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-            callbackURL: "http://localhost:5000/api/auth/google/callback",
-            scope:['profile','email']
-        },
-        async function(accessToken, refreshToken, profile, cb) {
 
+  
 
-            
-            try {
-                const name = profile.displayName
-                const email = profile.emails[0].value;
-                const userRolId = [2000]
-                const user = await UserModel.findOrCreate({googleId:profile.id, email:email,name:name,uerRole:userRolId})
-   
-                return cb(null,user)
-            } catch (error) {
-                return cb(error,null);
-            }
-
-        }
-        ));
-
-        passport.serializeUser(function(user, done) {
-            done(null, user.user_id); // Almacenar el ID del usuario en la sesión
-        });
+        // passport.serializeUser(function(user, cb) {
+        //     process.nextTick(function() {
+        //       cb(null, { id: user.user_id, username: user.username, email: user.email, name: user.name, googleId: user.googleId });
+        //     });
+        //   })
       
-        passport.deserializeUser(function(id, done) {
-            UserModel.findById(id, function(err, user) {
-            done(err, user); // Recuperar el usuario a partir del ID almacenado en la sesión
-            });
-        });
+        //   passport.deserializeUser(function(user, cb) {
+        //     process.nextTick(function() {
+        //       return cb(null, user);
+        //     });
+        //   });
+
+        
+
     
 
 
@@ -58,7 +41,7 @@ dotenvConfig();
     //GOOGLE AUTH
 
     authRoutes.get('/google',
-    passport.authenticate('google', { scope: ['profile','email'] }));
+            passport.authenticate('google', { scope: ['profile','email'] }));
 
 
 
@@ -66,14 +49,18 @@ dotenvConfig();
     authRoutes.get('/google/callback', function(req, res, next) {
             passport.authenticate('google', { failureRedirect: '/login' },async function(err, user, info, status) {
 
-                // console.log(user);
-                const email = user['email']
-                console.log(email);
+              
+                console.log(user);
+                
+
+              await UserModel.findOrCreate({googleId:user.googleId, email:user.email,name:user.name,userRole:user.userRole})
+
+
                 const userRolId=[2000]
                 // create jwt
             const accessToken = jwt.sign(
                 { "userInfo":{
-                "email": email ,
+                "email": user.email ,
                 "roles": userRolId
                 }
                 },
@@ -82,18 +69,16 @@ dotenvConfig();
             )
 
             const refreshToken = jwt.sign(
-                {"email": email },
+                {"email": user.email },
                 process.env.REFRESH_TOKEN_SECRET_KEY,
                 {expiresIn: '1h'}
             )
+            console.log('refresToken created: '+refreshToken);
+            
+            const input = {refreshToken,email:user.email}
+            const tokenInsertion = await UserModel.insertToken({input})
 
-            const input = {refreshToken,email}
-            await UserModel.insertToken({input})
-
-           
-            res.cookie('jwt',refreshToken,{httpOnly: true, sameSite: 'None', secure: true, maxAge: 24 * 60 * 60 * 1000})
-
-
+                res.cookie('jwt',refreshToken,{httpOnly: true, sameSite: 'None', secure: true, maxAge: 24 * 60 * 60 * 1000})
                 // enviar jwt
                 res.redirect('http://localhost:3000/redirect');
 

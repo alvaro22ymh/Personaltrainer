@@ -51,7 +51,7 @@ export const getUserByRefreshToken = async(req,res)  =>{
       const userRolesId = []
       AllUserRoles.forEach(role=> role.user_id == user.user_id && userRolesId.push(role.role_id))
 
-    
+    console.log(user);
 
 
       //evaluate jwt

@@ -5,7 +5,7 @@ import { dbConnection } from '../index.js';
 
 export class UserModel {
 
-    static async findOrCreate({googleId,email='',name='',userRolId=[]}){
+    static async findOrCreate({googleId,email='',name='',userRole=[]}){
    
         function generarNombreUnico(name) {
             // Generar 5 números aleatorios entre 0 y 9
@@ -19,21 +19,24 @@ export class UserModel {
           const noSpace = username.replace(/\s/g, '')
       
             const [data] = await dbConnection.query('SELECT * FROM user WHERE google_id=?',[googleId])
-                if(data.length > 0){
-                    const userData = data[0]
-                    if (userData.hasOwnProperty('user_id')){
-                      
+          
+            if(data.length > 0){
+                const userData = data[0]
+                if (userData.hasOwnProperty('user_id')){
+                   
                     return data[0]
                     }
                     
                 }else{
-                    const [data] = await dbConnection.query('INSERT INTO user (google_id,email,username) VALUES (?,?,?)',[googleId,email,noSpace])
-                                   await dbConnection.query('INSERT INTO user_role (user_id, role_id) VALUES ((SELECT user_id FROM user WHERE email = ?), (SELECT role_id FROM role WHERE role_id = ?))', [email, userRolId])
-                    return data[0]
-                }
+                                   await dbConnection.query('INSERT INTO user (google_id,email,username) VALUES (?,?,?)',[googleId,email,noSpace])
+                                   await dbConnection.query('INSERT INTO user_role (user_id, role_id) VALUES ((SELECT user_id FROM user WHERE email = ?), (SELECT role_id FROM role WHERE role_id = ?))', [email, userRole])
+                   const [data] = await dbConnection.query('SELECT * FROM user WHERE google_id=?',[googleId])
+
+                   return data[0]
+            }
                
                     
-            }
+         }
         
 
 
@@ -113,9 +116,10 @@ export class UserModel {
 
     static async insertToken({input}){
         const {refreshToken,email} = input;
-
+        console.log('refresh token insertion '+refreshToken);
         try {
-            await dbConnection.query('UPDATE user SET refreshToken=? WHERE email=?',[refreshToken, email])
+            const res = await dbConnection.query('UPDATE user SET refreshToken=? WHERE email=?',[refreshToken, email])
+
             return { success: true, message: 'Token inserted successfully.' };
             
         } catch (error) {
